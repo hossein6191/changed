@@ -1,0 +1,14 @@
+{
+  "name": "changed",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Changed: event tickets whose terms survive a change notice. Validators read the organizer's own notice on the live web, and if the date, the venue or the main act changed, every ticket holder can take their money back from escrow.",
+  "type": "module",
+  "scripts": {
+    "smoke": "node tests/on_chain/smoke.mjs"
+  },
+  "dependencies": {
+    "genlayer-js": "1.1.8",
+    "viem": "2.56.8"
+  }
+}
