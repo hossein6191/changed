@@ -4,14 +4,14 @@
 // DEMO_CONTRACT is the deployed copy the site reads when NEXT_PUBLIC_CONTRACT is unset. It is filled
 // in once the contract is deployed; while both are empty every page says the contract is not
 // deployed yet, and the whole site still works with NEXT_PUBLIC_MOCK=1.
-export const DEMO_CONTRACT: string = "";
+export const DEMO_CONTRACT: string = "0xF40908518f675871f39a2cb78C6bF2C9A199dFf9";
 
 /**
  * The commit of the public repository whose notices/ the demo event reads, as raw.githubusercontent.com
  * serves them: every validator fetches the same bytes. Filled in once the repository is pushed;
  * NEXT_PUBLIC_NOTICES_COMMIT overrides it. While both are empty the demo organizer cannot open its event.
  */
-export const NOTICES_COMMIT: string = "";
+export const NOTICES_COMMIT: string = "90efba4e5221b35f03ae8861b791b02388a1c141";
 
 export const SITE_NAME = "Changed";
 export const SITE_TAGLINE = "If the show changes, the money comes back.";
