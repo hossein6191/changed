@@ -406,7 +406,49 @@ line.
 
 ## Evidence
 
-The on-chain run is recorded here once it has run.
+Run on 19 October 2026 on GenLayer Studio (chain 61999) by `tests/on_chain/smoke.mjs`, from generated accounts funded from the
+Studio faucet, none of them anybody's wallet: **ORGANIZER** opens the events, **FAN_A** and **FAN_B** buy tickets, **STRANGER** tries what it may not. **42 passed, 0 failed**; transactions: 34 in 34 steps; sent a second time: none.
+The whole log is `tests/on_chain/smoke-run.log`. Every validator read doors-later.html as minor (the tickets stood, the fee went to the organizer) and new-date.html as material, after which both fans took their 0.5 GEN back from escrow; the same text under a second request was a repeat, and a cancelled second event refunded both fans.
+
+- `changed.py` deployed at [`0xF40908518f675871f39a2cb78C6bF2C9A199dFf9`](https://explorer-studio.genlayer.com/address/0xF40908518f675871f39a2cb78C6bF2C9A199dFf9)
+
+- the code deployed at 0xF40908518f675871f39a2cb78C6bF2C9A199dFf9 is byte for byte contracts/changed.py: 67928 bytes, sha256 c878e5d513647bc0bbf7a95c693dcb118f52e2106701ac1e8f99967bcb6a0562
+
+| step | by | transactions | votes |
+|---|---|---|---|
+| ORGANIZER opens E1, the Harbour Lights Festival: 14 June 2027, Saltmarsh Pier Arena, The Lantern Tides; 0.5 GEN, three tickets | ORGANIZER | [0x1dc40ca3…](https://explorer-studio.genlayer.com/tx/0x1dc40ca36f42466dea5254da06e436adf4eb97852a3df4024610718258ba2927), [0x030ee636…](https://explorer-studio.genlayer.com/tx/0x030ee636458b3639b39a122c0dbd50ad30043fe88746d2f7dc1ccbfefa163a4c) | 5 agree, 0 disagree, 0 idle |
+| STRANGER may not cancel E1 | STRANGER | [0x93f8ce32…](https://explorer-studio.genlayer.com/tx/0x93f8ce321340095474d94671f0198c004ab797530b55833c874e80d9f4a862c2) | 5 agree, 0 disagree, 0 idle |
+| FAN_A buys T1 to E1: 0.5 GEN held in escrow | FANA | [0x98655ab4…](https://explorer-studio.genlayer.com/tx/0x98655ab439918cd82e3f140ee8327f4ca771c9e7c5f50c975e9f57c94dcd9947) | 5 agree, 0 disagree, 0 idle |
+| FAN_B buys T2 to E1: 0.5 GEN held in escrow | FANB | [0xe830a9f4…](https://explorer-studio.genlayer.com/tx/0xe830a9f4c6fc00dcf7a0a31f0d9ffec3b496b26665e95fa0eb89c7ae110b317a) | 5 agree, 0 disagree, 0 idle |
+| ORGANIZER may not buy its own ticket, and the 0.5 GEN comes back in the same transaction | ORGANIZER | [0x3f45d19a…](https://explorer-studio.genlayer.com/tx/0x3f45d19a064fa84c38fdcfa3b4513f063588fdbb0d306d57c012dfecb9049d01) | 5 agree, 0 disagree, 0 idle |
+| FAN_A sends 0.4 GEN for a 0.5 GEN ticket: refused, and the 0.4 GEN comes back | FANA | [0xecc5ced8…](https://explorer-studio.genlayer.com/tx/0xecc5ced850e2a0e6c35f658d93a4b9da520069839c1ebe059a51b7976df9d188) | 5 agree, 0 disagree, 0 idle |
+| FAN_A may not refund T1 while nothing has changed | FANA | [0x4000c146…](https://explorer-studio.genlayer.com/tx/0x4000c14624b15784953d7337e04489e53bae620bb6cc5d57c8926e20eaceefb3) | 5 agree, 0 disagree, 0 idle |
+| nobody may settle T1 to the organizer before a day after the start | STRANGER | [0xccef0fc7…](https://explorer-studio.genlayer.com/tx/0xccef0fc795c2dc968549766a6184d933f62c9bf0f81549a9ebaf5fe892073cb3) | 3 agree, 0 disagree, 2 idle |
+| STRANGER asks for a review with no credit: refused before anything is fetched | STRANGER | [0xa8282fd4…](https://explorer-studio.genlayer.com/tx/0xa8282fd47b58253c6818fb06a42c33e046ad968d32e3e83201eb3678cebb5d79) | 3 agree, 0 disagree, 2 idle |
+| FAN_A deposits 0.03 GEN of review credit | FANA | [0xe9b5a256…](https://explorer-studio.genlayer.com/tx/0xe9b5a256df23babdd349152c1665bcc477cf7daa7dcd8c558730bd74770c377d) | 3 agree, 0 disagree, 2 idle |
+| FAN_B deposits 0.03 GEN of review credit | FANB | [0xdb7672e7…](https://explorer-studio.genlayer.com/tx/0xdb7672e7cb64f2637f63311a986f180eee7e735f7d5de41826b8e1d470c03fca) | 3 agree, 0 disagree, 2 idle |
+| STRANGER deposits 0.02 GEN of review credit | STRANGER | [0x99fb1a00…](https://explorer-studio.genlayer.com/tx/0x99fb1a004eece8d6a1a20371c0e31054f95cdb20c96004cfa92137d6334861ea) | 5 agree, 0 disagree, 0 idle |
+| FAN_A points at the repository's README, outside the organizer's prefix: refused before any fetch, no fee | FANA | [0x5df08191…](https://explorer-studio.genlayer.com/tx/0x5df08191a18468aecd7f5ff05bc75f41b97ffe3e3f43340707484acee8ffc7c4) | 4 agree, 0 disagree, 1 idle |
+| every validator reads doors-later.html (doors at 18:30): minor, nothing changes, the 0.01 GEN fee goes to ORGANIZER | FANA | [0xe14302f5…](https://explorer-studio.genlayer.com/tx/0xe14302f548e1778a0a632165baeeaa8f29271d670634e7cc6c2d416524ddb496) | 3 agree, 0 disagree, 2 idle |
+| FAN_B asks about doors-later.html again: the same text, so R1 stands and the fee goes to ORGANIZER although FAN_B holds a ticket | FANB | [0x130dbd1b…](https://explorer-studio.genlayer.com/tx/0x130dbd1b2559d75df4b137dbe35fe6921570e7b87166263c077d00efb1b87686) | 3 agree, 0 disagree, 2 idle |
+| every validator reads new-date.html (moved to 21 June 2027): material, E1 changes and the fee stays with FAN_B | FANB | [0x250c972e…](https://explorer-studio.genlayer.com/tx/0x250c972e14ef953398aa0787c6997c8db4487cf3a23c7fd19b93d8b383a0c180) | 3 agree, 0 disagree, 2 idle |
+| FAN_A takes the 0.5 GEN of T1 back from escrow | FANA | [0xbc96d9af…](https://explorer-studio.genlayer.com/tx/0xbc96d9af401bea466eec3d78ca85b4f5c6efe9af78ebf86697dcb88a6c392685) | 5 agree, 0 disagree, 0 idle |
+| FAN_B takes the 0.5 GEN of T2 back from escrow | FANB | [0x2af3cef0…](https://explorer-studio.genlayer.com/tx/0x2af3cef07952a216f437c004d3f3b9424754423946deac2d38f4db339eddb99e) | 5 agree, 0 disagree, 0 idle |
+| a second refund of T1 is refused | FANA | [0x16e3fb4d…](https://explorer-studio.genlayer.com/tx/0x16e3fb4d794f92ce2155f51dd3b18afcc7b2d7916b843123c9bf9d2c4ee4d7dd) | 3 agree, 0 disagree, 2 idle |
+| E1 changed, so it sells nothing more, and the 0.5 GEN comes back | FANA | [0x0f287787…](https://explorer-studio.genlayer.com/tx/0x0f287787356a44d1b67163962233a645ef74c2d8cbe5230c91cdf456e5151675) | 5 agree, 0 disagree, 0 idle |
+| ORGANIZER puts the festival on sale again as E2, with two tickets | ORGANIZER | [0xa3387e07…](https://explorer-studio.genlayer.com/tx/0xa3387e07078e32c2a581db3992facc21779f3a13b5b8c44612804a3f1068a50e) | 3 agree, 0 disagree, 2 idle |
+| FAN_A buys T3 to E2 | FANA | [0x4267c4ae…](https://explorer-studio.genlayer.com/tx/0x4267c4ae4e0972de948598860ec9537306f6de19fe28ed568c0e13bc810ec2f3) | 3 agree, 0 disagree, 2 idle |
+| FAN_B buys T4 to E2 | FANB | [0x6e25d620…](https://explorer-studio.genlayer.com/tx/0x6e25d6200712b2019be4493da9177eb8896c8eb616ec29f70f3340d95c5736a7) | 3 agree, 0 disagree, 2 idle |
+| E2 is sold out: STRANGER is refused and the 0.5 GEN comes back | STRANGER | [0x0589f7e2…](https://explorer-studio.genlayer.com/tx/0x0589f7e23a4672bdca0ac015ab9ed866fd2da5d905172fe014b775d8e28dda51) | 3 agree, 0 disagree, 2 idle |
+| STRANGER, holding no ticket, asks for new-support.html: minor, the fee goes to ORGANIZER | STRANGER | [0xfe175f58…](https://explorer-studio.genlayer.com/tx/0xfe175f58bd1cce08bac5c8fb0baae776f175d4305689a0be3dbd21bdd49f10b0) | 3 agree, 0 disagree, 2 idle |
+| T3 cannot be settled to the organizer yet: that opens a day after E2 starts | STRANGER | [0xfdb07e8e…](https://explorer-studio.genlayer.com/tx/0xfdb07e8eac00b6780e6a50ca258d9fb2db0cfabadc10b11bbbf6cf7a2bcf8eb0) | 3 agree, 0 disagree, 2 idle |
+| ORGANIZER cancels E2 before its start: every refund opens, nothing is paid to anyone yet | ORGANIZER | [0xfa3d0cb8…](https://explorer-studio.genlayer.com/tx/0xfa3d0cb807e40151400645120fc758a791ffedbb8b1ddbcb95c80e9d66295458) | 5 agree, 0 disagree, 0 idle |
+| FAN_A takes the 0.5 GEN of T3 back | FANA | [0xc47644be…](https://explorer-studio.genlayer.com/tx/0xc47644be71873bb3d317811da5414707650ce4f0b59ae7347e129058ac48e45f) | 3 agree, 0 disagree, 2 idle |
+| FAN_B takes the 0.5 GEN of T4 back | FANB | [0x74e1415b…](https://explorer-studio.genlayer.com/tx/0x74e1415b5f6d035af5e46333e8e30667cbe8b423e02a7dc06d0cadb5151d0b46) | 3 agree, 0 disagree, 2 idle |
+| a refunded ticket (T4) can never be settled to the organizer | STRANGER | [0xf220dbb5…](https://explorer-studio.genlayer.com/tx/0xf220dbb5e10907a17779a5a9d1b3537f550110a8dbe9d433e87a721c97ccd09c) | 5 agree, 0 disagree, 0 idle |
+| FAN_A takes its 0.02 GEN of credit back | FANA | [0x0613fa80…](https://explorer-studio.genlayer.com/tx/0x0613fa80a834055ff8a463b0bee670eea9806b0645a771a65255cf9d1113c344) | 5 agree, 0 disagree, 0 idle |
+| FAN_B takes its 0.02 GEN of credit back | FANB | [0xce30d569…](https://explorer-studio.genlayer.com/tx/0xce30d569bacd081be4775e8af123cda12533c3a87c596d9eae156767f192b2d7) | 4 agree, 0 disagree, 1 idle |
+| STRANGER takes its 0.01 GEN of credit back | STRANGER | [0xc4dacbad…](https://explorer-studio.genlayer.com/tx/0xc4dacbad5f7aa26423b042670f925ab9b4656b04bf862bbfe9678e0826b27c81) | 4 agree, 0 disagree, 1 idle |
 
 ## Licence
 
